@@ -22,7 +22,7 @@ Client to the HTTP API of Pusher.
 There easiest way to configure the library is by creating a new `Pusher` instance:
 
 	client := pusher.Client{
-	  AppId: "your_app_id",
+	  AppID: "your_app_id",
 	  Key: "your_app_key",
 	  Secret: "your_app_secret",
 	}
@@ -70,7 +70,7 @@ func ClientFromURL(url string) (*Client, error) {
 	if len(matches) == 0 {
 		return nil, errors.New("No app ID found")
 	}
-	c.AppId = matches[1]
+	c.AppID = matches[1]
 
 	if url2.User == nil {
 		return nil, errors.New("Missing <key>:<secret>")
@@ -190,7 +190,7 @@ func (c *Client) trigger(channels []string, eventName string, data interface{}, 
 	if err != nil {
 		return nil, err
 	}
-	path := fmt.Sprintf("/apps/%s/events", c.AppId)
+	path := fmt.Sprintf("/apps/%s/events", c.AppID)
 	u, err := createRequestURL("POST", c.Host, path, c.Key, c.Secret, authTimestamp(), c.Secure, payload, nil, c.Cluster)
 	if err != nil {
 		return nil, err
@@ -239,7 +239,7 @@ func (c *Client) TriggerBatch(batch []Event) (*BufferedEvents, error) {
 	if err != nil {
 		return nil, err
 	}
-	path := fmt.Sprintf("/apps/%s/batch_events", c.AppId)
+	path := fmt.Sprintf("/apps/%s/batch_events", c.AppID)
 	u, err := createRequestURL("POST", c.Host, path, c.Key, c.Secret, authTimestamp(), c.Secure, payload, nil, c.Cluster)
 	if err != nil {
 		return nil, err
@@ -269,7 +269,7 @@ specify an `"info"` key with value `"user_count"`. Pass in `nil` if you do not w
 
 */
 func (c *Client) Channels(additionalQueries map[string]string) (*ChannelsList, error) {
-	path := fmt.Sprintf("/apps/%s/channels", c.AppId)
+	path := fmt.Sprintf("/apps/%s/channels", c.AppID)
 	u, err := createRequestURL("GET", c.Host, path, c.Key, c.Secret, authTimestamp(), c.Secure, nil, additionalQueries, c.Cluster)
 	if err != nil {
 		return nil, err
@@ -299,7 +299,7 @@ if you wish to enable this. Pass in `nil` if you do not wish to specify any quer
 	//channel=> &{Name:presence-chatroom Occupied:true UserCount:42 SubscriptionCount:42}
 */
 func (c *Client) Channel(name string, additionalQueries map[string]string) (*Channel, error) {
-	path := fmt.Sprintf("/apps/%s/channels/%s", c.AppId, name)
+	path := fmt.Sprintf("/apps/%s/channels/%s", c.AppID, name)
 	u, err := createRequestURL("GET", c.Host, path, c.Key, c.Secret, authTimestamp(), c.Secure, nil, additionalQueries, c.Cluster)
 	if err != nil {
 		return nil, err
@@ -320,7 +320,7 @@ Get a list of users in a presence-channel by passing to this method the channel 
 
 */
 func (c *Client) GetChannelUsers(name string) (*Users, error) {
-	path := fmt.Sprintf("/apps/%s/channels/%s/users", c.AppId, name)
+	path := fmt.Sprintf("/apps/%s/channels/%s/users", c.AppID, name)
 	u, err := createRequestURL("GET", c.Host, path, c.Key, c.Secret, authTimestamp(), c.Secure, nil, nil, c.Cluster)
 	if err != nil {
 		return nil, err
