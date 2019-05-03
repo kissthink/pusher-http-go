@@ -101,7 +101,7 @@ func TestGetChannelUserSuccess(t *testing.T) {
 	assert.NoError(t, err)
 
 	expected := &Users{
-		List: []User{User{Id: "red"}, User{Id: "blue"}},
+		List: []User{User{ID: "red"}, User{ID: "blue"}},
 	}
 	assert.Equal(t, users, expected)
 }

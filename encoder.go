@@ -27,7 +27,7 @@ type eventPayload struct {
 }
 
 type BufferedEvents struct {
-	EventIds map[string]string `json:"event_ids,omitempty"`
+	EventIDs map[string]string `json:"event_ids,omitempty"`
 }
 
 func encodeTriggerBody(channels []string, event string, data interface{}, socketID *string, encryptionKey string) ([]byte, error) {

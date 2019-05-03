@@ -38,7 +38,7 @@ func TestParsingChannel(t *testing.T) {
 func TestParsingChannelUsers(t *testing.T) {
 	testJSON := []byte("{\"users\":[{\"id\":\"red\"},{\"id\":\"blue\"}]}")
 	expected := &Users{
-		List: []User{User{Id: "red"}, User{Id: "blue"}},
+		List: []User{User{ID: "red"}, User{ID: "blue"}},
 	}
 	result, err := unmarshalledChannelUsers(testJSON)
 	assert.Equal(t, expected, result)
@@ -49,7 +49,7 @@ func TestParsingChannelUsers(t *testing.T) {
 func TestParsingTriggerResult(t *testing.T) {
 	testJSON := []byte("{\"event_ids\":{\"test_channel\":\"eudhq17zrhfc4f\",\"another_channel\":\"eudhq17zrhfc74\"}}")
 	expected := &BufferedEvents{
-		EventIds: map[string]string{
+		EventIDs: map[string]string{
 			"test_channel":    "eudhq17zrhfc4f",
 			"another_channel": "eudhq17zrhfc74",
 		},
