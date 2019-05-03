@@ -41,13 +41,19 @@ Changing the `pusher.Client`'s `Host` property will make sure requests are sent
 to your specified host.
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	client.Host = "foo.bar.com" // by default this is "api.pusherapp.com".
 =======
+=======
+>>>>>>> Stashed changes
     client.Host = "foo.bar.com" // by default this is "api.pusherapp.com".
 
 If you wish to use push notifications, you need to define the
 Client.PushNotificationHost, please see Pusher docs for more details:
 https://pusher.com/docs/push_notifications
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 */
 type Client struct {
@@ -306,17 +312,23 @@ not allowed by default. Please contact us at http://support.pusher.com if you
 wish to enable this. Pass in `nil` if you do not wish to specify any query
 attributes.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 
     channelParams := map[string]string{
         "info": "user_count,subscription_count",
     }
 
+<<<<<<< Updated upstream
 =======
 
     channelParams := map[string]string{
         "info": "user_count,subscription_count",
     }
 
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     channel, err := client.Channel("presence-chatroom", channelParams)
 
