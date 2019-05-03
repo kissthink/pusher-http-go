@@ -206,7 +206,7 @@ type Event struct {
 	Channel  string
 	Name     string
 	Data     interface{}
-	SocketId *string
+	SocketID *string
 }
 
 /* TriggerBatch triggers multiple events on multiple types of channels in a single call:
@@ -222,7 +222,7 @@ func (c *Client) TriggerBatch(batch []Event) (*BufferedEvents, error) {
 		if !validChannel(event.Channel) {
 			return nil, fmt.Errorf("The channel named %s has a non-valid name", event.Channel)
 		}
-		if err := validateSocketID(event.SocketId); err != nil {
+		if err := validateSocketID(event.SocketID); err != nil {
 			return nil, err
 		}
 		if isEncryptedChannel(event.Channel) {

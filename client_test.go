@@ -106,7 +106,7 @@ func TestGetChannelUserSuccess(t *testing.T) {
 	assert.Equal(t, users, expected)
 }
 
-func TestTriggerWithSocketId(t *testing.T) {
+func TestTriggerWithSocketID(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 		res.WriteHeader(200)
 		expectedBody := "{\"name\":\"test\",\"channels\":[\"test_channel\"],\"data\":\"yolo\",\"socket_id\":\"1234.12\"}"
@@ -121,7 +121,7 @@ func TestTriggerWithSocketId(t *testing.T) {
 	client.TriggerExclusive("test_channel", "test", "yolo", "1234.12")
 }
 
-func TestTriggerSocketIdValidation(t *testing.T) {
+func TestTriggerSocketIDValidation(t *testing.T) {
 	client := Client{AppID: "id", Key: "key", Secret: "secret"}
 	_, err := client.TriggerExclusive("test_channel", "test", "yolo", "1234.12:lalala")
 	assert.Error(t, err)
