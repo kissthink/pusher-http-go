@@ -40,14 +40,15 @@ Changing the `pusher.Client`'s `Host` property will make sure requests are sent 
 	client.Host = "foo.bar.com" // by default this is "api.pusherapp.com".
 */
 type Client struct {
-	AppId               string
-	Key                 string
-	Secret              string
-	Host                string // host or host:port pair
-	Secure              bool   // true for HTTPS
-	Cluster             string
-	HttpClient          *http.Client
-	EncryptionMasterKey string //for E2E
+	AppID                string
+	Key                  string
+	Secret               string
+	Host                 string // host or host:port pair
+	PushNotificationHost string
+	Secure               bool // true for HTTPS
+	Cluster              string
+	HTTPClient           *http.Client
+	EncryptionMasterKey  string //for E2E
 }
 
 /*
@@ -106,11 +107,11 @@ Returns the underlying HTTP client.
 Useful to set custom properties to it.
 */
 func (c *Client) requestClient() *http.Client {
-	if c.HttpClient == nil {
-		c.HttpClient = &http.Client{Timeout: time.Second * 5}
+	if c.HTTPClient == nil {
+		c.HTTPClient = &http.Client{Timeout: time.Second * 5}
 	}
 
-	return c.HttpClient
+	return c.HTTPClient
 }
 
 func (c *Client) request(method, url string, body []byte) ([]byte, error) {
