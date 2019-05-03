@@ -26,6 +26,9 @@ type eventPayload struct {
 	SocketID *string  `json:"socket_id,omitempty"`
 }
 
+/*
+BufferedEvents is a struct that stores a map of EventIDs to Events
+*/
 type BufferedEvents struct {
 	EventIDs map[string]string `json:"event_ids,omitempty"`
 }
@@ -53,7 +56,7 @@ func encodeTriggerBody(channels []string, event string, data interface{}, socket
 }
 
 func encodeTriggerBatchBody(batch []Event, encryptionKey string) ([]byte, error) {
- 	batchEvents := make([]batchEvent, len(batch))
+	batchEvents := make([]batchEvent, len(batch))
 	for idx, e := range batch {
 		var stringifyedDataBytes string
 		dataBytes, err := encodeEventData(e.Data)
